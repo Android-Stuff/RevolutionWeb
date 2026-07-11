@@ -2,9 +2,367 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vincent Alexander — Portfolio</title>
+    <style>
+        /* Apple Design System Variables */
+        :root {
+            --bg-color: #000000;
+            --card-bg: #1d1d1f;
+            --text-primary: #f5f5f7;
+            --text-secondary: #86868b;
+            --accent-blue: #0071e3;
+            --nav-bg: rgba(0, 0, 0, 0.8);
+            --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-stack);
+            letter-spacing: -0.01em;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Global Layout Links */
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+        a:hover {
+            opacity: 0.7;
+        }
+
+        /* Global Apple-Style Container */
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 22px;
+        }
+
+        /* 1. Main Top Navigation (Translucent Blur) */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 48px;
+            background: var(--nav-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 9999;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .main-nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo {
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* 2. Sub-Navigation Pills (Mirrors Image) */
+        .sub-nav-wrapper {
+            margin-top: 80px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .sub-nav {
+            display: flex;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px;
+            border-radius: 30px;
+            list-style: none;
+        }
+
+        .sub-nav-btn {
+            font-size: 13px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .sub-nav-btn.active {
+            background: #ffffff;
+            color: #000000;
+            font-weight: 500;
+        }
+
+        .sub-nav-btn:not(.active):hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* 3. Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 0 60px 0;
+        }
+
+        .hero-tagline {
+            font-size: 21px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .hero-title {
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.07;
+            max-width: 800px;
+            margin: 0 auto 24px auto;
+            background: linear-gradient(180deg, #fff 60%, #a1a1a6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-description {
+            font-size: 24px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.4;
+        }
+
+        /* 4. Feature Cards Layout (Apple Product Showcase) */
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 80px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 28px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 420px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .card:hover {
+            transform: scale(1.015);
+        }
+
+        .card-large {
+            grid-column: span 2;
+            min-height: 500px;
+        }
+
+        .card-header h3 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .card-header p {
+            font-size: 17px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+            max-width: 480px;
+        }
+
+        /* Decorative mock canvas to mimic software UI screenshot in image */
+        .mock-ui-frame {
+            background: rgba(255, 255, 255, 0.03);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px 14px 0 0;
+            height: 220px;
+            margin-top: 30px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .mock-dot-container {
+            display: flex;
+            gap: 6px;
+        }
+
+        .mock-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .mock-code-line {
+            height: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            width: 80%;
+        }
+
+        /* 5. Footer Architecture */
+        footer {
+            background: #1d1d1f;
+            color: var(--text-secondary);
+            font-size: 12px;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            .showcase-grid {
+                grid-template-columns: 1fr;
+            }
+            .card-large {
+                grid-column: span 1;
+            }
+            .hero-title {
+                font-size: 40px;
+            }
+            .nav-links {
+                display: none; /* Can be swapped for a hamburger menu icon */
+            }
+        }
+    </style>
 </head>
-    <body>
-    Hello World!
-    </body>
+<body>
+
+    <!-- Main Navigation Bar -->
+    <nav class="main-nav">
+        <div class="container">
+            <a href="#" class="logo">Vincent Alexander</a>
+            <ul class="nav-links">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#engineering">Engineering</a></li>
+                <li><a href="#ui-design">UI Design</a></li>
+                <li><a href="#security">Security</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Sub-Navigation Pill Buttons (Matches Image Layout) -->
+    <div class="sub-nav-wrapper">
+        <ul class="sub-nav">
+            <li class="sub-nav-btn active">Overview</li>
+            <li class="sub-nav-btn">C++ Engine</li>
+            <li class="sub-nav-btn">Compose UI</li>
+            <li class="sub-nav-btn">Data Modeler</li>
+            <li class="sub-nav-btn">Infosec</li>
+        </ul>
+    </div>
+
+    <!-- Main Hero Section -->
+    <header class="hero container">
+        <p class="hero-tagline">Informatics Engineering</p>
+        <h1 class="hero-title">Introducing pure performance. <br>Truly structured. Truly fast.</h1>
+        <p class="hero-description">
+            Building rigorous backend architectures, deterministic software, and native high-fidelity interfaces.
+        </p>
+    </header>
+
+    <!-- Project and Core Competency Bento Grid Grid -->
+    <main class="container showcase-grid">
+        
+        <!-- Large Card 1: Systems Engineering -->
+        <section class="card card-large">
+            <div class="card-header">
+                <h3>C++ Systems & Complexity</h3>
+                <p>Architecting memory-efficient, deterministic programs. Specializing in low-level data structures, algorithmic tracking systems, and formal language automation principles.</p>
+            </div>
+            <!-- Mock OS window matching graphic aesthetic -->
+            <div class="mock-ui-frame">
+                <div class="mock-dot-container">
+                    <div class="mock-dot" style="background: #ff5f56;"></div>
+                    <div class="mock-dot" style="background: #ffbd2e;"></div>
+                    <div class="mock-dot" style="background: #27c93f;"></div>
+                </div>
+                <div class="mock-code-line" style="width: 40%; background: var(--accent-blue);"></div>
+                <div class="mock-code-line" style="width: 75%;"></div>
+                <div class="mock-code-line" style="width: 60%;"></div>
+                <div class="mock-code-line" style="width: 90%;"></div>
+            </div>
+        </section>
+
+        <!-- Small Card 2: Native Android UI -->
+        <section class="card">
+            <div class="card-header">
+                <h3>Jetpack Compose</h3>
+                <p>Designing fluid state-driven user interfaces for Android applications. Utilizing declarative UI patterns to tie custom assets into production-grade pipelines.</p>
+            </div>
+        </section>
+
+        <!-- Small Card 3: Database Engineering -->
+        <section class="card">
+            <div class="card-header">
+                <h3>Relational Data Architectures</h3>
+                <p>Translating complex logical designs into strict relational physical schemas. Fluent in structural optimization techniques up to 3NF standards using modern database modelers.</p>
+            </div>
+        </section>
+
+        <!-- Large Card 4: Cybersecurity -->
+        <section class="card card-large">
+            <div class="card-header">
+                <h3>Defensive Engineering & Capture The Flag</h3>
+                <p>Proactively identifying edge-case application vulnerabilities and payload vectors. Deep domain familiarity across web security mechanics (JWT verification flaws, programmatic SQLi prevention) and digital binary forensics.</p>
+            </div>
+            <div class="mock-ui-frame" style="height: 160px; justify-content: center; background: rgba(0,113,227,0.05); border: 1px dashed rgba(0,113,227,0.3)">
+                <p style="font-family: monospace; font-size: 13px; color: var(--accent-blue); text-align: center;">[INSPECTING PACKET HEADER // STATUS: SECURE]</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Apple Minimal Footer -->
+    <footer>
+        <div class="container">
+            <p>Universitas Jember — Faculty of Computer Science. Developed with pure semantics.</p>
+            <div class="footer-content">
+                <p>Copyright © 2026 Vincent Alexander. All rights reserved.</p>
+                <p>Indonesia</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
 </html>
