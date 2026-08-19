@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vincent Alexander — Portfolio</title>
     <style>
-        /* Apple Design System Variables */
+
         :root {
             --bg-color: #000000;
             --card-bg: #1d1d1f;
@@ -31,7 +31,7 @@
             overflow-x: hidden;
         }
 
-        /* Global Layout Links */
+
         a {
             color: inherit;
             text-decoration: none;
@@ -41,14 +41,14 @@
             opacity: 0.7;
         }
 
-        /* Global Apple-Style Container */
+
         .container {
             max-width: 1080px;
             margin: 0 auto;
             padding: 0 22px;
         }
 
-        /* 1. Main Top Navigation (Translucent Blur) */
+
         .main-nav {
             position: fixed;
             top: 0;
@@ -82,7 +82,7 @@
             color: var(--text-secondary);
         }
 
-        /* 2. Sub-Navigation Pills (Mirrors Image) */
+
         .sub-nav-wrapper {
             margin-top: 80px;
             display: flex;
@@ -118,7 +118,7 @@
             background: rgba(255, 255, 255, 0.1);
         }
 
-        /* 3. Hero Section */
+
         .hero {
             text-align: center;
             padding: 80px 0 60px 0;
@@ -152,7 +152,7 @@
             line-height: 1.4;
         }
 
-        /* 4. Feature Cards Layout (Apple Product Showcase) */
+  
         .showcase-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -197,7 +197,7 @@
             max-width: 480px;
         }
 
-        /* Decorative mock canvas to mimic software UI screenshot in image */
+
         .mock-ui-frame {
             background: rgba(255, 255, 255, 0.03);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -230,7 +230,6 @@
             width: 80%;
         }
 
-        /* 5. Footer Architecture */
         footer {
             background: #1d1d1f;
             color: var(--text-secondary);
@@ -248,7 +247,7 @@
             margin-top: 20px;
         }
 
-        /* Responsive Breakpoints */
+
         @media (max-width: 768px) {
             .showcase-grid {
                 grid-template-columns: 1fr;
@@ -260,14 +259,14 @@
                 font-size: 40px;
             }
             .nav-links {
-                display: none; /* Can be swapped for a hamburger menu icon */
+                display: none;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Main Navigation Bar -->
+
     <nav class="main-nav">
         <div class="container">
             <a href="#" class="logo">Vincent Alexander</a>
@@ -281,7 +280,7 @@
         </div>
     </nav>
 
-    <!-- Sub-Navigation Pill Buttons (Matches Image Layout) -->
+
     <div class="sub-nav-wrapper">
         <ul class="sub-nav">
             <li class="sub-nav-btn active">Overview</li>
@@ -292,7 +291,7 @@
         </ul>
     </div>
 
-    <!-- Main Hero Section -->
+
     <header class="hero container">
         <p class="hero-tagline">Informatics Engineering</p>
         <h1 class="hero-title">Introducing pure performance. <br>Truly structured. Truly fast.</h1>
@@ -301,16 +300,13 @@
         </p>
     </header>
 
-    <!-- Project and Core Competency Bento Grid Grid -->
     <main class="container showcase-grid">
-        
-        <!-- Large Card 1: Systems Engineering -->
+
         <section class="card card-large">
             <div class="card-header">
                 <h3>C++ Systems & Complexity</h3>
                 <p>Architecting memory-efficient, deterministic programs. Specializing in low-level data structures, algorithmic tracking systems, and formal language automation principles.</p>
             </div>
-            <!-- Mock OS window matching graphic aesthetic -->
             <div class="mock-ui-frame">
                 <div class="mock-dot-container">
                     <div class="mock-dot" style="background: #ff5f56;"></div>
@@ -324,7 +320,6 @@
             </div>
         </section>
 
-        <!-- Small Card 2: Native Android UI -->
         <section class="card">
             <div class="card-header">
                 <h3>Jetpack Compose</h3>
@@ -332,7 +327,6 @@
             </div>
         </section>
 
-        <!-- Small Card 3: Database Engineering -->
         <section class="card">
             <div class="card-header">
                 <h3>Relational Data Architectures</h3>
@@ -340,7 +334,7 @@
             </div>
         </section>
 
-        <!-- Large Card 4: Cybersecurity -->
+
         <section class="card card-large">
             <div class="card-header">
                 <h3>Defensive Engineering & Capture The Flag</h3>
@@ -353,7 +347,6 @@
 
     </main>
 
-    <!-- Apple Minimal Footer -->
     <footer>
         <div class="container">
             <p>Universitas Jember — Faculty of Computer Science. Developed with pure semantics.</p>
